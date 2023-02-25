@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+/*
+ * Consegna:
+ * scrivere un programma TuttiPositiviPari 
+ * che chiede all’utente di inserire una sequenza di interi (chiedendo prima quanti numeri voglia inserire)
+ * e poi, al termine dell’inserimento dell’intera sequenza, 
+ * stampa "Tutti positivi e pari" se i numeri inseriti sono tutti positivi e pari,
+ * altrimenti stampa "NO". 
+ * Risolvere questo esercizio senza usare array. 
+ */
+
+public class TuttiPositiviPari {
+
+	public static void main(String[] args) {
+
+		//creo lo scanner per poter prendere i dati inseriti dall'utente
+		Scanner tastiera = new Scanner(System.in);
+		
+		//stampo in console la domanda per l'utente
+		System.out.println("Quanti numeri vuoi inserire?");
+		//mi salvo il valore all'interno di una variabile, lo userò come limite per ciclare il while
+		int limite = tastiera.nextInt();
+		
+		/*
+		 * dichiaro e inizializzo la variabile che conta il numero di giri del ciclo while
+		 * che mi permette di uscire quando l'utente ha raggiunto il numero di valori inseriti che si era prefissato (nella variabile limite)
+		 */
+		int i = 0;
+		
+		/*
+		 * variabile per controllare se la condizione dei numeri pari e positivi viene rispettata da OGNI numero inserito
+		 * (spiego sotto)
+		 */
+		int casiNonValidi = 0;
+		
+		/*
+		 * creo un ciclo che mi servirà per prendere la sequenza di numeri inseriri dall'utente
+		 * devo smettere di ciclare quando il numero di giri raggiunge limite (condizione dell'while)
+		 */
+				
+		while(i < limite) {
+			//chiedo all'utente di inserire un numero della sequenza che andrà a comporre
+			System.out.println("Inserisci un numero");
+			//immagazzino il valore all'interno di una variabile di tipo int
+			int numeroSequenza = tastiera.nextInt();
+			
+			/*
+			 * dato che alla fine della sequenza devo stampare se TUTTI i numeri inseriti sono sia positivi che pari
+			 * devo eseguire un controllo su ogni valore immesso dall'utente
+			 * mi serve che il valore della verifica rimanga in memoria e non venga sovrascritta ad ogni ingresso nel ciclo
+			 * (esempio: se l'utente decide di inserire 3 numeri e il primo e il terzo sono pari, ma il secondo è dispari
+			 * non posso perdermi la verifica del secondo per strada e sovrascriverla con la condizione del terzo numero,
+			 * altrimenti stamperò che tutti i numeri rispettano la condizione di positivo e pari, ma uno precedente all'ultimo
+			 * smentiva l'affermazione)
+			 * per questo creo una variabile esterna al ciclo (casiNonValidi)
+			 * 
+			 * su ogni numero immesso dall'utente eseguo la verifica:
+			 * se il numero è sia pari che positivo (&&) la variabile di controllo rimarrà invariata
+			 * (che poi associerò alla stampa "tutti pari e positivi)
+			 * 
+			 * devo mettere l'else proprio perché se dopo un numero pari e positivo viene inserito un numero negativo ecc
+			 * il valore della variabile si deve modificare e diventando diverso da zero mi fa capire che almeno una volta
+			 * si è verificata la condizione che invalida la sequenza 
+			 */
+			if(!(numeroSequenza > 0 && numeroSequenza % 2 == 0))
+				casiNonValidi++;
+			
+			//incremento la i di 1 per tenere il numero delle volte che ciclo
+			i++;
+		}
+		
+		if(casiNonValidi == 0)		
+			System.out.println("----------\nTutti i numeri della sequenza sono sia pari che positivi");
+		else
+			System.out.println("----------\nNella sequenza c'è almeno un numero che non rispetta le condizioni");
+		
+		//chiudo lo scanner
+		tastiera.close();
+	}
