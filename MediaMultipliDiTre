@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+/*
+ * Consegna:
+ * scrivere un programma MediaMultipliDiTre che chieda all'utente di inserire una sequenza di interi
+ * (chiedendo prima quanti numeri voglia inserire) e poi stampa la media di tutti i numeri inseriti che siano divisibili per tre
+ */
+
+public class MediaMultipliDiTre {
+
+	public static void main(String[] args) {
+		
+		//creo uno scanner per prendere i dati che l'utente immette da tastiera
+		Scanner tastiera = new Scanner(System.in);
+		 
+		//chiedo all'utente quanti numeri vuole inserire
+		System.out.println("Quanti numeri vuoi inserire?");
+		//salvo il dato in una variabile
+		int limite = tastiera.nextInt();
+		
+		/*
+		 * dato che devo calcolare una media dei multipli di 3 inseriti dall'utente
+		 * ho bisongno di una variabile per ricordare la loro somma e una per ricordare quanti sono
+		 * per poter poi eseguire la divisione
+		 */
+		int somma = 0;
+		int contatoreMultipli = 0;
+		
+		/*
+		 * dichiaro e inizializzo a 0 una variabile che servirà a bloccare il ciclo 
+		 * appena l'utente raggiunge la quantità di inserimenti prefissata
+		 */
+		int contatoreCicli = 0;
+		
+		System.out.println("----------");
+		
+		while(contatoreCicli < limite) {
+			//chiedo all'utente di inserire un numero
+			System.out.println("Inserisci un numero");
+			//salvo il valore inserito da tastiera
+			int numero = tastiera.nextInt();
+			
+			/*
+			 * se il numero inserito è multiplo di tre devo addizionarlo alla somma e aumentare il conto dei multipli di uno
+			 * quindi entro nel blocco per eseguire le operazioni
+			 */
+			if(numero % 3 == 0) {
+				//aggiungo il valore di numero alla somma
+				somma += numero;
+				//aggiungo uno al numero dei multipli tra cui poi calcolare la media
+				contatoreMultipli++;
+			}	
+			
+			/*
+			 * incremento di uno il contatore dei cicli perchè devo tenere il conto di quanti numeri l'utente ha inserito
+			 * (un numero a ciclo) per uscire dal ciclo e interrompere la richiesta di inserimento
+			 */
+			contatoreCicli++;	
+			
+		}
+		
+		/*
+		 * dichiaro e inizializzo una variabile con il valore della media ottenuta dai multipli di 3 inseriti
+		 * 
+		 * se non inserisco alcun multiplo la divisione mi darà come risultato "indeterminato"
+		 * (n / 0 = 0 -> poichè qualsiasi numero moltiplicato 0 mi restituisce 0, ci sono infinite soluzioni e questo genera un errore)
+		 * quindi farò in modo che la variabile media esista SOLO nel caso in cui venga inserito almeno un multiplo 
+		 * e sia dunque possibile eseguire la divisione
+		 * 
+		 * inserisco la stampa nel blocco perchè richiamando la variabile media all'interno della stampa,
+		 * se la scrivessi fuori dall'if genererebbe un errore,
+		 * proprio perché l'esistenza della media non è certa, ma inserita in un if, quindi è una probabilità
+		 * perciò non avendo la certezza che esista non posso richiamarla come se fosse certa 
+		 * 
+		 */
+		if(contatoreMultipli > 0) {
+			int media = somma / contatoreMultipli;
+			System.out.println("----------\nLa media dei multipli di 3 che hai inserito vale: " + media);			
+		}
+		else
+			System.out.println("-------------\nNon hai inserito numeri divisibili per tre");
+		
+		//chiudo la tastiera
+		tastiera.close();
+		
+	}
+
+}
