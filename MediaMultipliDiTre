@@ -70,7 +70,7 @@ public class MediaMultipliDiTre {
 		 * inserisco la stampa nel blocco perchè richiamando la variabile media all'interno della stampa,
 		 * se la scrivessi fuori dall'if genererebbe un errore,
 		 * proprio perché l'esistenza della media non è certa, ma inserita in un if, quindi è una probabilità
-		 * perciò non avendo la certezza che esista non posso richiamarla come se fosse certa 
+		 * perciò non avendo la certezza che esista non posso richiamarla dando per scontato che esista
 		 * 
 		 */
 		if(contatoreMultipli > 0) {
