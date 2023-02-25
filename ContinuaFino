@@ -31,11 +31,16 @@ public class ContinuaFino {
 		
 		
 		/*
-		 * --vedi sotto, riga --
+		 * dichiaro e inizializzo a zero una variabile che conterrà la somma di tutti i numeri che rispettano le condizioni
 		 */
 		int somma = 0;
 		
 		while((numeroSequenza < 0 && numeroSequenza % 2 == 0) || (numeroSequenza > 0 && numeroSequenza % 3 == 0)){
+			/*
+			 * anche se il primo numero è stato immesso dall'utente estrenamente al ciclo
+			 * lo inserisco nella somma solamente una volta all'inteno del ciclo
+			 * perché se non rispettava le condizioni non deve essere aggiunto e quindi anche il ciclo non deve essere eseguito
+			 */
 			somma += numeroSequenza;
 			System.out.println("\nInserisci un numero");
 			numeroSequenza = tastiera.nextInt();
