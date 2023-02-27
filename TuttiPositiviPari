@@ -58,10 +58,6 @@ public class TuttiPositiviPari {
 			 * su ogni numero immesso dall'utente eseguo la verifica:
 			 * se il numero è sia pari che positivo (&&) la variabile di controllo rimarrà invariata
 			 * (che poi associerò alla stampa "tutti pari e positivi)
-			 * 
-			 * devo mettere l'else proprio perché se dopo un numero pari e positivo viene inserito un numero negativo ecc
-			 * il valore della variabile si deve modificare e diventando diverso da zero mi fa capire che almeno una volta
-			 * si è verificata la condizione che invalida la sequenza 
 			 */
 			if(!(numeroSequenza > 0 && numeroSequenza % 2 == 0))
 				casiNonValidi++;
